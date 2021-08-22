@@ -1,29 +1,64 @@
 import React from "react";
+import {
+  Route,
+  Switch,
+  BrowserRouter as Router,
+  Redirect,
+} from "react-router-dom";
 
-import Row from "./Row";
-import requests from "../helpers/requests";
 import "./App.css";
-import Banner from "./Banner";
-import Navbar from "./Navbar";
+import {
+  Navbar,
+  Row,
+  Home,
+  Page404,
+  LoginPage,
+  ProfilePage,
+  MoviePage,
+} from "./index";
+
+// const PrivateRoute = (privateRouteProps) => {
+//   const { isLoggedin, path, component: Component } = privateRouteProps;
+
+//   return (
+//     <Route
+//       path={path}
+//       render={(props) => {
+//         console.log("props", props);
+//         console.log("isLoggedin", isLoggedin);
+//         return isLoggedin ? (
+//           <Component {...props} />
+//         ) : (
+//           <Redirect
+//             to={{
+//               pathname: "/login",
+//               state: {
+//                 from: props.location,
+//               },
+//             }}
+//           />
+//         );
+//       }}
+//     />
+//   );
+// };
 
 const App = () => {
   return (
     <div className="app">
-      <Navbar />
-      <Banner />
-      <Row
-        title="NETFLIX ORIGINALS"
-        fetchUrl={requests.fetchNetflixOriginals}
-        isLargeRow
-      />
-      <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
-      <Row title="Top Rates" fetchUrl={requests.fetchTrending} />
-      <Row title="Trending Now" fetchUrl={requests.fetchTopRated} />
-      <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
-      <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
-      <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
-      <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
-      <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} />
+      <Router>
+        <div>
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={LoginPage} />
+            <Route path="/home" component={Home} />
+            <Route path="/movie" component={MoviePage} />
+            <Route path="/profile" component={ProfilePage} />
+
+            <Route component={Page404} />
+          </Switch>
+        </div>
+      </Router>
     </div>
   );
 };

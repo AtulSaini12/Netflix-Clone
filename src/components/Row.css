@@ -18,14 +18,25 @@
   object-fit: contain;
   max-height: 100px;
   margin-right: 10px;
-  transition: transform 450ms;
+  transition: all 600ms;
 }
 
 .row-poster:hover {
   transform: scale(1.08);
+  border-radius: 1.2em;
+  border-top-left-radius: 1.5em;
+  border-top-right-radius: 1.5em;
   cursor: pointer;
 }
 
+.movie-name {
+  color: aquamarine;
+  font-weight: 400;
+}
+
+.movie-name:hover {
+  cursor: default;
+}
 .row-posterLarge {
   max-height: 250px;
 }
