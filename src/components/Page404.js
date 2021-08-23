@@ -1,9 +1,6 @@
 import React from "react";
+import "./Page404.css";
 
 export default function Page404() {
-  return (
-    <div>
-      <div>Page 404</div>
-    </div>
-  );
+  return <div className="error-page"></div>;
 }

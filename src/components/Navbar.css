@@ -4,6 +4,7 @@
   width: 100%;
   padding: 20px;
   height: 30px;
+  cursor: pointer;
 
   display: flex;
   justify-content: space-between;
@@ -17,7 +18,7 @@
   background-color: #111;
 }
 
-.nav-logo {
+.nav-image {
   position: fixed;
   left: 20px;
   width: 80px;

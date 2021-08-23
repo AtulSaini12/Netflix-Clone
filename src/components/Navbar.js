@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -23,17 +24,20 @@ const Navbar = () => {
 
   return (
     <div className={`${show ? "nav nav-black" : "nav"}`}>
-      <img
-        className="nav-image"
-        src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
-        alt="netflix-logo"
-      />
-
-      <img
-        className="nav-avatar"
-        src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-        alt="nav-avatar"
-      />
+      <Link to="/home" style={{ textDecoration: "none" }}>
+        <img
+          className="nav-image"
+          src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+          alt="netflix-logo"
+        />
+      </Link>
+      <Link to="/profile">
+        <img
+          className="nav-avatar"
+          src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+          alt="nav-avatar"
+        />
+      </Link>
     </div>
   );
 };
