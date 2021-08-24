@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
   const [show, handleShow] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -24,20 +25,18 @@ const Navbar = () => {
 
   return (
     <div className={`${show ? "nav nav-black" : "nav"}`}>
-      <Link to="/home" style={{ textDecoration: "none" }}>
-        <img
-          className="nav-image"
-          src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
-          alt="netflix-logo"
-        />
-      </Link>
-      <Link to="/profile">
-        <img
-          className="nav-avatar"
-          src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-          alt="nav-avatar"
-        />
-      </Link>
+      <img
+        onClick={() => history.push("/home")}
+        className="nav-image"
+        src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+        alt="netflix-logo"
+      />
+      <img
+        onClick={() => history.push("/profile")}
+        className="nav-avatar"
+        src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+        alt="nav-avatar"
+      />
     </div>
   );
 };

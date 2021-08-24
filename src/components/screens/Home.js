@@ -1,10 +1,8 @@
 import React from "react";
 
-import Row from "./Row";
-import requests from "../helpers/requests";
+import requests from "../../helpers/requests";
 import "./Home.css";
-import Banner from "./Banner";
-import Navbar from "./Navbar";
+import { Banner, Navbar, Row } from "../index";
 
 const Home = () => {
   return (

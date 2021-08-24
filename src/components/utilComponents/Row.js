@@ -4,7 +4,7 @@ import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
 
 import "./Row.css";
-import axios from "../helpers/axios";
+import axios from "../../helpers/axios";
 
 const imageBaseURL = "https://image.tmdb.org/t/p/original/";
 

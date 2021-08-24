@@ -1,12 +1,12 @@
-import Banner from "./Banner";
-import Home from "./Home";
-import Row from "./Row";
-import Navbar from "./Navbar";
-import Page404 from "./Page404";
-import ProfilePage from "./ProfilePage";
-import LoginPage from "./LoginPage";
-import MoviePage from "./MoviePage";
-
+import Banner from "./utilComponents/Banner";
+import Home from "./screens/Home";
+import Row from "./utilComponents/Row";
+import Navbar from "./utilComponents/Navbar";
+import Page404 from "./screens/Page404";
+import ProfilePage from "./screens/ProfilePage";
+import LoginPage from "./screens/LoginPage";
+import MoviePage from "./screens/MoviePage";
+import SignUpScreen from "./screens/SignUpScreen";
 export {
   Banner,
   Home,
@@ -16,4 +16,5 @@ export {
   LoginPage,
   Page404,
   MoviePage,
+  SignUpScreen,
 };

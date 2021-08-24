@@ -1,5 +1,5 @@
 .error-page {
-  background: url("../images/404-error-page.png");
+  /* background: url("../images/404-error-page.png"); */
   min-width: 100vw;
   min-height: 100vh;
   object-fit: contain;
