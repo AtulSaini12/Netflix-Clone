@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
 import { auth } from "../../Firebase/firebase";
-import { Navbar } from "../index";
+import { Navbar, PlansScreen } from "../index";
 import "./ProfilePage.css";
 
 export default function ProfilePage() {
@@ -22,7 +22,7 @@ export default function ProfilePage() {
             <h2>{user.email}</h2>
             <div className="profile-screen-plans">
               <h3>Plans</h3>
-              <p></p>
+              <PlansScreen />
               <button
                 onClick={() => auth.signOut}
                 className="profile-screen-sign-out"

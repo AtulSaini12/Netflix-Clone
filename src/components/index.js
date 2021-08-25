@@ -7,6 +7,8 @@ import ProfilePage from "./screens/ProfilePage";
 import LoginPage from "./screens/LoginPage";
 import MoviePage from "./screens/MoviePage";
 import SignUpScreen from "./screens/SignUpScreen";
+import PlansScreen from "./screens/PlansScreen";
+
 export {
   Banner,
   Home,
@@ -17,4 +19,5 @@ export {
   Page404,
   MoviePage,
   SignUpScreen,
+  PlansScreen,
 };
