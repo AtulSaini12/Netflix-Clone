@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -16,7 +16,6 @@ const Navbar = () => {
 
   const handleScroll = () => {
     if (window.scrollY > 100) {
-      console.log("scrool > 100");
       handleShow(true);
     } else {
       handleShow(false);

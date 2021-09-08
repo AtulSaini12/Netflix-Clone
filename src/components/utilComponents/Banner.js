@@ -33,8 +33,6 @@ const Banner = () => {
         backgroundPosition: "center center",
       }}
     >
-      {/* div -> 2 buttons */}
-      {/* dscription */}
       <div className="banner-contents">
         <h1 className="banner-title">
           {movie?.title || movie?.name || movie?.original_name}

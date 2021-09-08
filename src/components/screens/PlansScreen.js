@@ -22,7 +22,7 @@ export default function PlansScreen() {
     getPlanData();
 
     return () => getPlanData;
-  }, [plans, activePlan]);
+  }, [plans, activePlan, user.email]);
 
   if (!plans) {
     return <div className="plans-screen">No Plans Available!</div>;

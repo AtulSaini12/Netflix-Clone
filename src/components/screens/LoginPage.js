@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-// import { GoogleOutlined, GithubOutlined } from "@ant-design/icons";
 import { SignUpScreen } from "../index";
 import "./LoginPage.css";
-// import "firebase/app";
-// import { auth } from "../firebase";
-// import firebase from "firebase/app";
 
 export default function LoginPage() {
   const [signIn, setSignIn] = useState(false);

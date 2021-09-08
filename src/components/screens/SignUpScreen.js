@@ -15,8 +15,6 @@ export default function SignUpScreen() {
         passwordRef.current.value
       )
       .then((authUser) => {
-        console.log(authUser);
-
         db.collection("plans")
           .doc(authUser.user._delegate.email)
           .set({
@@ -41,9 +39,6 @@ export default function SignUpScreen() {
         emailRef.current.value,
         passwordRef.current.value
       )
-      .then((authUser) => {
-        console.log(authUser.user);
-      })
       .catch((error) => alert(error.message));
   };
 

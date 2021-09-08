@@ -15,5 +15,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
-
-//API key - 32b927577cfe92215dd2a9bcd7c5b572
