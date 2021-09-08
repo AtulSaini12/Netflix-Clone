@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { auth } from "../../Firebase/firebase";
+import db, { auth } from "../../Firebase/firebase";
 import "./SignUp.css";
 
 export default function SignUpScreen() {
@@ -16,6 +16,17 @@ export default function SignUpScreen() {
       )
       .then((authUser) => {
         console.log(authUser);
+
+        db.collection("plans")
+          .doc(authUser.user._delegate.email)
+          .set({
+            active: "Basic",
+            plans: [
+              { name: "Premium", description: "4k + HD" },
+              { name: "Standard", description: "1080p" },
+              { name: "Basic", description: "720p" },
+            ],
+          });
       })
       .catch((error) => {
         alert(error.message);
@@ -31,7 +42,7 @@ export default function SignUpScreen() {
         passwordRef.current.value
       )
       .then((authUser) => {
-        console.log(authUser);
+        console.log(authUser.user);
       })
       .catch((error) => alert(error.message));
   };

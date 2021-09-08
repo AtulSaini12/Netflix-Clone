@@ -1,23 +1,10 @@
 import React, { useEffect } from "react";
-import {
-  Route,
-  Switch,
-  BrowserRouter as Router,
-  Redirect,
-} from "react-router-dom";
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { auth } from "../Firebase/firebase";
 
 import "./App.css";
-import {
-  Navbar,
-  Row,
-  Home,
-  Page404,
-  LoginPage,
-  ProfilePage,
-  MoviePage,
-} from "./index";
+import { Home, LoginPage, ProfilePage } from "./index";
 import { login, logout, selectUser } from "../features/userSlice";
 
 // const PrivateRoute = (privateRouteProps) => {
@@ -62,7 +49,7 @@ const App = () => {
         );
       } else {
         //logged out
-        dispatch(logout);
+        dispatch(logout());
       }
     });
 
@@ -73,14 +60,16 @@ const App = () => {
     <div className="app">
       <Router>
         <div>
-          <Switch>
-            <Route exact path="/" component={LoginPage} />
-            <Route path="/home" component={Home} />
-            <Route path="/movie" component={MoviePage} />
-            <Route path="/profile" component={ProfilePage} />
-
-            <Route component={Page404} />
-          </Switch>
+          {!user ? (
+            <LoginPage />
+          ) : (
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/profile" component={ProfilePage} />
+            </Switch>
+          )}
         </div>
       </Router>
     </div>

@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <div className={`${show ? "nav nav-black" : "nav"}`}>
       <img
-        onClick={() => history.push("/home")}
+        onClick={() => history.push("/")}
         className="nav-image"
         src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
         alt="netflix-logo"

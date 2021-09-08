@@ -1,6 +1,7 @@
 .profile-screen {
   height: 100vh;
   color: #fff;
+  background-color: #000;
 }
 
 .profile-screen-body {
@@ -39,6 +40,7 @@
   padding: 15px;
   font-size: 15px;
   padding-left: 20px;
+  border-radius: 8px;
 }
 
 .profile-screen-sign-out {
@@ -50,6 +52,11 @@
   background-color: #e50914;
   border: none;
   cursor: pointer;
+  transition: all 400ms;
+}
+
+.profile-screen-sign-out:hover {
+  border-radius: 10px;
 }
 
 .profile-screen-plans {

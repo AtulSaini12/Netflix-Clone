@@ -24,7 +24,9 @@ export default function ProfilePage() {
               <h3>Plans</h3>
               <PlansScreen />
               <button
-                onClick={() => auth.signOut}
+                onClick={() => {
+                  auth.signOut();
+                }}
                 className="profile-screen-sign-out"
               >
                 Sign Out

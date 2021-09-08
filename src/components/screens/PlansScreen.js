@@ -1,66 +1,67 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { selectUser } from "../../features/userSlice";
+import { doc, getDoc } from "firebase/firestore";
 import db from "../../Firebase/firebase";
-import {loadStripe} from '@stripe/stripe-js';
 import "./PlansScreen.css";
 
 export default function PlansScreen() {
-    const [products, setProducts] = useState([]);
-    const user = useSelector(selectUser);
+  const [plans, setPlans] = useState(null);
+  const [activePlan, setActivePlan] = useState("");
+  const user = useSelector(selectUser);
 
-    useEffect(()=>{
-        db.collection('products')
-          .where('active', '==', true)
-          .get().then((querySnapshot)=>{
-              const products = [];
-              querySnapshot.forEach(async productDoc => {
-                  products(productDoc.id) = productDoc.data();
-                  const priceSnap = await productDoc.ref.collection('prices').get();
-                  priceSnap.docs.forEach(price => {
-                      products(productDoc.id).prices = {
-                          priceId : price.id,
-                          priceData : price.data(),
-                      }
-                  })
-              })
-              setProducts(products);
-          });
-    },[]);
-    
-    const loadCheckout = async (priceId) =>{
-        const docRef = await db.collection('customers').doc(user.uid).collection("checkout_sessions").add({
-            price: priceId,
-            succes_url: window.location.origin,
-            cancel_url: window.location.origin,
-        });
+  useEffect(() => {
+    const getPlanData = async () => {
+      const docRef = doc(db, "plans", `${user.email}`);
+      const docSnapshot = await getDoc(docRef);
 
-        docRef.onSnapshot(async (snap) =>{
-            const {error, sessionID} = snap.data();
+      setPlans(docSnapshot.data().plans);
+      setActivePlan(docSnapshot.data().active);
+    };
 
-            if(error){
-                alert(`An error Occurred: ${error.message}`);
-            }
+    getPlanData();
 
-            if(sessionID){
-                const stripe = await loadStripe()
-            }
-        })
+    return () => getPlanData;
+  }, [plans, activePlan]);
 
-    }
+  if (!plans) {
+    return <div className="plans-screen">No Plans Available!</div>;
+  }
 
-    return (
-    <div className="plans-screen" >
-        {Object.entries(products).map(({productId, productData}) =>{
-            return (
-                <div className="plans-screen-plan">
-                    <div className="plans-screen-info">
-                        <h5>{productData.name}</h5>
-                        <h6>{productData.description}</h6>
-                    </div>
-                    <Button onClick={() => loadCheckout(productData.prices.priceId)} >Subscribe</Button>
-                </div>
-            );
-             } )}
+  return (
+    <div className="plans-screen">
+      <div className="plans-screen-plan">
+        <div className="plans-screen-info">
+          <h5>{plans[0]["name"]}</h5>
+          <h6>{plans[0]["description"]}</h6>
+        </div>
+        <button>Subscribe</button>
+      </div>
+      <div className="plans-screen-plan">
+        <div className="plans-screen-info">
+          <h5>{plans[1]["name"]}</h5>
+          <h6>{plans[1]["description"]}</h6>
+        </div>
+        <button>Subscribe</button>
+      </div>
+      <div className="plans-screen-plan">
+        <div className="plans-screen-info">
+          <h5>{plans[2]["name"]}</h5>
+          <h6>{plans[2]["description"]}</h6>
+        </div>
+        <button>Subscribe</button>
+      </div>
+      {/* {plans.map((i) => {
+        return (
+          <div className="plans-screen-plan">
+            <div className="plans-screen-info">
+              <h5>{productData.name}</h5>
+              <h6>{productData.description}</h6>
+            </div>
+            <button>Subscribe</button>
+          </div>
+        );
+      })} */}
     </div>
   );
 }
